@@ -35,7 +35,7 @@ def welcome(bot, update):
                                                             " que tal vez te interese 😊\n[Website🌐](https://scidataucm.org/) - [Twitter🐤](https://twitter.com/scidataucm)"
                                                             " - [Instagram📷](https://www.instagram.com/scidataucm/) - [Github💻](https://github.com/SciDataUCM)"
                                                             " - Email✉: scidata@ucm.es"), parse_mode=telegram.ParseMode.MARKDOWN)
- 
+
 def goodbye(bot, update):
     logger.info("{}(username={}) left chat {}".format(update.message.left_chat_member.first_name, update.message.left_chat_member.username, update.message.chat_id))
 
@@ -54,6 +54,9 @@ def where(bot, update):
 def error(bot, update, error):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, error)
+
+def membership(bot, update):
+    bot.send_message(chat_id=update.message.chat_id, text="<a href="http://www.example.com/">inline URL</a>"parse_mode=telegram.ParseMode.HTML)
 
 def main():
     """ Start Koe """
@@ -80,5 +83,5 @@ def main():
     # start_polling() is non-blocking and will stop the bot gracefully.
     updater.idle()
 
-if __name__ == '__main__':  
+if __name__ == '__main__':
     main()
